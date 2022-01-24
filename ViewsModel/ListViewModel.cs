@@ -67,7 +67,9 @@ namespace Evaluation_bloc.ViewsModel
             int service;
             int site;
 
-
+            //Tricks pour filtre
+            //Pour que le filtre marche on regarde si les site et services sont vide
+            //Si oui, on les met a -1, sinon on va recuperer l'id
             if(siteNom != "")
             {
                 site = Services.SiteService.Instance.GetId(siteNom);
@@ -87,20 +89,26 @@ namespace Evaluation_bloc.ViewsModel
             
 
             //Dans la liste on met tout les items de la liste brute dans l'observable
+            // si le site == -1 ca veux dire que le champ de recherche est vide 
 
+            //les 3 champs sont rempli
             if (nom != "" &&  site != -1 && service != -1 )
             {
+                //creation de la liste de salarie en fonction des filtres
                 foreach (Salarie item in lst)
                 {
                     if (item.Nom == nom && item.Site == site && item.Service == service)
                     {
+                        //obligé de faire un new Salarie pour avoir le nom de site et service en str et non fk
                         var test = new Salarie { Nom = item.Nom, Prenom = item.Prenom, Email = item.Email, TelFixe = item.TelFixe, TelPortable = item.TelPortable, SiteNom = SalarieService.Instance.GetNomSite(item.Site), ServiceNom = SalarieService.Instance.GetNomService(item.Service) };
                         ListeSalaries.Add(test);
                     }
                 }
             }
+            //Si on est pas rentré dans la premiere condition on teste les suivante
             else
             {
+                //Seulement nom et site ...
                 if (nom != "" && site != -1)
                 {
                     foreach (Salarie item in lst)

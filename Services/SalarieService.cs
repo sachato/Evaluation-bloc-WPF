@@ -26,6 +26,8 @@ namespace Evaluation_bloc.Services
             }
         }
         #endregion
+
+        //Donnée a injecter a la 1 ere uttilisation(données test)
         public void Seed()
         {
             using (SalarieContext context = new SalarieContext())
@@ -87,6 +89,7 @@ namespace Evaluation_bloc.Services
 
         public void Enregistrer(Salarie salarie)
         {
+            //Initialisation de variables
             int idService = ServiceService.Instance.GetId(salarie.ServiceNom);
             int idSite = SiteService.Instance.GetId(salarie.SiteNom);
             List<Service> lstService = ServiceService.Instance.ChargerService();
@@ -95,8 +98,10 @@ namespace Evaluation_bloc.Services
             int compteurService = 0;
             Regex emailValidator = new Regex(@"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$");
 
+            //verification format email
             bool email = emailValidator.IsMatch(salarie.Email);
 
+            //Verification de l'existance du site
             foreach (Site item in lstSite)
             {
                 if(item.Id == idSite)
@@ -105,6 +110,7 @@ namespace Evaluation_bloc.Services
                 }
             }
 
+            //Verification de l'existance du service
             foreach (Service item in lstService)
             {
                 if (item.Id == idService)
@@ -113,6 +119,7 @@ namespace Evaluation_bloc.Services
                 }
             }
 
+            //Si tout est bon, on enregistre
             if (compteurService > 0 && compteurSite > 0 && email)
             {
                 Salarie enregistremoi = new Salarie { Id = salarie.Id, Nom = salarie.Nom, Prenom = salarie.Prenom, Email = salarie.Email, TelFixe = salarie.TelFixe, TelPortable = salarie.TelPortable, Service = ServiceService.Instance.GetId(salarie.ServiceNom), Site = SiteService.Instance.GetId(salarie.SiteNom) };
@@ -122,6 +129,7 @@ namespace Evaluation_bloc.Services
                     context.SaveChanges();
                 }
             }
+            //Sinon pop up erreur
             else
             {
                 MessageBox.Show("Attention, il y a une erreur dans le formulaire !");

@@ -14,14 +14,13 @@ using System.Windows.Shapes;
 
 namespace Evaluation_bloc
 {
-    /// <summary>
-    /// Logique d'interaction pour CrudService.xaml
-    /// </summary>
     public partial class CrudService : Window
     {
         public CrudService()
         {
             InitializeComponent();
+
+            //Liste de Service dans le datacontext
             this.DataContext = new ViewsModel.ServiceViewModel();
         }
     }

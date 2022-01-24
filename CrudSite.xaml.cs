@@ -14,14 +14,13 @@ using System.Windows.Shapes;
 
 namespace Evaluation_bloc
 {
-    /// <summary>
-    /// Logique d'interaction pour CrudSite.xaml
-    /// </summary>
     public partial class CrudSite : Window
     {
         public CrudSite()
         {
             InitializeComponent();
+
+            //Liste de Site dans le datacontext
             this.DataContext = new ViewsModel.SiteViewModel();
         }
 

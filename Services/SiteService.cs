@@ -25,6 +25,8 @@ namespace Evaluation_bloc.Services
             }
         }
         #endregion
+
+        //Creation de la liste des sites
         public List<Site> ChargerSites()
         {
             List<Site> lst = new List<Site>();
@@ -37,6 +39,8 @@ namespace Evaluation_bloc.Services
             return lst;
         }
 
+        //recuperation de l'id du site a partir d'un nom
+        //-2 signifie que le site n'existe pas
         public int GetId(string nom)
         {
             int idSite = -2;
@@ -67,15 +71,18 @@ namespace Evaluation_bloc.Services
 
         public bool Delete(Site site)
         {
+            //variable pour savoir si on continue la suppretion ou si un salarie uttilise le site
             bool continuer = true;
             var lstSalarie = Services.SalarieService.Instance.ChargerSalarie();
             foreach(Salarie item in lstSalarie)
             {
+                //on verifie que le site ne soit pas uttilisé par un salarie
                 if(item.Site == site.Id)
                 {
                     continuer = false;
                 }
             }
+            //pas de salarie uttilisant le site, on efface
             if (continuer)
             {
                 using (SalarieContext context = new SalarieContext())
@@ -85,6 +92,7 @@ namespace Evaluation_bloc.Services
                 }
                 return true;
             }
+            //un salarie uttilisant le filtre, on ne supprime pas
             else
             {
                 MessageBox.Show("Impossible de supprimer ce site, un uttilisateur y est associé");

@@ -14,14 +14,13 @@ using System.Windows.Shapes;
 
 namespace Evaluation_bloc
 {
-    /// <summary>
-    /// Logique d'interaction pour CrudSalarie.xaml
-    /// </summary>
     public partial class CrudSalarie : Window
     {
         public CrudSalarie()
         {
             InitializeComponent();
+
+            //Liste de Salarié dans le datacontext
             this.DataContext = new ViewsModel.SalarieViewModel();
         }
     }

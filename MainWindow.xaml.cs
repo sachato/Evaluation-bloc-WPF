@@ -21,21 +21,25 @@ namespace Evaluation_bloc
     /// </summary>
     public partial class MainWindow : Window
     {
-        public byte[] hashed;
         public MainWindow()
         {
             
             InitializeComponent();
+            //ijection de donnee dans la bdd
             //Services.SalarieService.Instance.Seed();
+            //recuperation de la siste des salarié dans le datacontext
             this.DataContext = new ViewsModel.ListViewModel();
-            Application.Current.Properties["Admin"] = false;
         }
 
+        //methode de recherche par trois filtre : Site, Service et Nom
         private void Rechercher_Click(object sender, RoutedEventArgs e)
         {
+            //Initialisation des variables filtre
             string site = Site.Text;
             var service = Service.Text;
             string nom = Nom.Text;
+
+            //Nouvelle liste de Salarié dans le data context
             this.DataContext = new ViewsModel.ListViewModel(site, service, nom);
         }
     }

@@ -33,7 +33,7 @@ namespace Evaluation_bloc.ViewsModel
             //on initialise l'observable
             ListeSites = new ObservableCollection<Site>();
             
-
+            //creation de la liste de Site
             foreach (Site item in lstSite)
             {
                 ListeSites.Add(item);
@@ -51,12 +51,15 @@ namespace Evaluation_bloc.ViewsModel
             NotifyPropertyChanged("SiteSelected");
         }
 
+
+
         private ICommand saveCommand;
 
         public ICommand SaveCommand
         {
             get
             {
+
                 if (saveCommand == null)
                 {
                     saveCommand = new RelayCommand(() => {

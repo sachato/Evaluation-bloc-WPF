@@ -14,20 +14,20 @@ using System.Windows.Shapes;
 
 namespace Evaluation_bloc
 {
-    /// <summary>
-    /// Logique d'interaction pour Identification.xaml
-    /// </summary>
     public partial class Identification : Window
     {
         public Identification()
         {
             InitializeComponent();
-
         }
 
         private void Pass_Click(object sender, RoutedEventArgs e)
         {
+            //initialisation de la variable password
+            //Il est mieux de cacher le password par hash
             var password = pass.Password;
+
+            //Si le mot de passe est correct, affichage de la fenetre admin + fermeture de la fenetre d'identification
             if(password == "azerty")
             {
                 Admin admin = new Admin();
