@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -20,9 +21,22 @@ namespace Evaluation_bloc
     /// </summary>
     public partial class MainWindow : Window
     {
+        public byte[] hashed;
         public MainWindow()
         {
+            
             InitializeComponent();
+            //Services.SalarieService.Instance.Seed();
+            this.DataContext = new ViewsModel.ListViewModel();
+            Application.Current.Properties["Admin"] = false;
+        }
+
+        private void Rechercher_Click(object sender, RoutedEventArgs e)
+        {
+            string site = Site.Text;
+            var service = Service.Text;
+            string nom = Nom.Text;
+            this.DataContext = new ViewsModel.ListViewModel(site, service, nom);
         }
     }
 }
