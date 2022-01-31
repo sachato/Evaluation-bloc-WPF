@@ -18,7 +18,7 @@ namespace Evaluation_bloc.Model
 
         //la configuration à la base de données SqlServer locale
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=C:\Users\sacha\source\repos\Evaluation bloc\Data\EvalBloc.mdf;Integrated Security = True");
+        => optionsBuilder.UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Sacha\Source\Repos\Evaluation-bloc-WPF\Data\Database1.mdf;Integrated Security=True");
 
 
         //Les relations entre les entités

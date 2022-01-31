@@ -30,6 +30,10 @@ namespace Evaluation_bloc.ViewsModel
                 return (Salarie)collectionViewSalarie.CurrentItem;
                 //return collectionViewSalarie.CurrentItem as contact;
             }
+            set
+            {
+
+            }
         }
 
         public Site SiteSelected
@@ -100,7 +104,7 @@ namespace Evaluation_bloc.ViewsModel
                     if (item.Nom == nom && item.Site == site && item.Service == service)
                     {
                         //obligé de faire un new Salarie pour avoir le nom de site et service en str et non fk
-                        var test = new Salarie { Nom = item.Nom, Prenom = item.Prenom, Email = item.Email, TelFixe = item.TelFixe, TelPortable = item.TelPortable, SiteNom = SalarieService.Instance.GetNomSite(item.Site), ServiceNom = SalarieService.Instance.GetNomService(item.Service) };
+                        var test = new Salarie { Id = item.Id, Nom = item.Nom, Prenom = item.Prenom, Email = item.Email, TelFixe = item.TelFixe, TelPortable = item.TelPortable, SiteNom = SalarieService.Instance.GetNomSite(item.Site), Site = item.Site, ServiceNom = SalarieService.Instance.GetNomService(item.Service), Service = item.Service };
                         ListeSalaries.Add(test);
                     }
                 }
@@ -115,7 +119,7 @@ namespace Evaluation_bloc.ViewsModel
                     {
                         if (item.Nom == nom && item.Site == site)
                         {
-                            var test = new Salarie { Nom = item.Nom, Prenom = item.Prenom, Email = item.Email, TelFixe = item.TelFixe, TelPortable = item.TelPortable, SiteNom = SalarieService.Instance.GetNomSite(item.Site), ServiceNom = SalarieService.Instance.GetNomService(item.Service) };
+                            var test = new Salarie { Id = item.Id, Nom = item.Nom, Prenom = item.Prenom, Email = item.Email, TelFixe = item.TelFixe, TelPortable = item.TelPortable, SiteNom = SalarieService.Instance.GetNomSite(item.Site), Site = item.Site, ServiceNom = SalarieService.Instance.GetNomService(item.Service), Service = item.Service };
                             ListeSalaries.Add(test);
                         }
                     }
@@ -128,7 +132,7 @@ namespace Evaluation_bloc.ViewsModel
                         {
                             if (item.Site == site && item.Service == service)
                             {
-                                var test = new Salarie { Nom = item.Nom, Prenom = item.Prenom, Email = item.Email, TelFixe = item.TelFixe, TelPortable = item.TelPortable, SiteNom = SalarieService.Instance.GetNomSite(item.Site), ServiceNom = SalarieService.Instance.GetNomService(item.Service) };
+                                var test = new Salarie { Id = item.Id, Nom = item.Nom, Prenom = item.Prenom, Email = item.Email, TelFixe = item.TelFixe, TelPortable = item.TelPortable, SiteNom = SalarieService.Instance.GetNomSite(item.Site), Site = item.Site, ServiceNom = SalarieService.Instance.GetNomService(item.Service), Service = item.Service };
                                 ListeSalaries.Add(test);
                             }
                         }
@@ -141,7 +145,7 @@ namespace Evaluation_bloc.ViewsModel
                             {
                                 if (item.Nom == nom && item.Service == service)
                                 {
-                                    var test = new Salarie { Nom = item.Nom, Prenom = item.Prenom, Email = item.Email, TelFixe = item.TelFixe, TelPortable = item.TelPortable, SiteNom = SalarieService.Instance.GetNomSite(item.Site), ServiceNom = SalarieService.Instance.GetNomService(item.Service) };
+                                    var test = new Salarie { Id = item.Id, Nom = item.Nom, Prenom = item.Prenom, Email = item.Email, TelFixe = item.TelFixe, TelPortable = item.TelPortable, SiteNom = SalarieService.Instance.GetNomSite(item.Site), Site = item.Site, ServiceNom = SalarieService.Instance.GetNomService(item.Service), Service = item.Service };
                                     ListeSalaries.Add(test);
                                 }
                             }
@@ -154,7 +158,7 @@ namespace Evaluation_bloc.ViewsModel
                                 {
                                     if (item.Service == service)
                                     {
-                                        var test = new Salarie { Nom = item.Nom, Prenom = item.Prenom, Email = item.Email, TelFixe = item.TelFixe, TelPortable = item.TelPortable, SiteNom = SalarieService.Instance.GetNomSite(item.Site), ServiceNom = SalarieService.Instance.GetNomService(item.Service) };
+                                        var test = new Salarie { Id = item.Id, Nom = item.Nom, Prenom = item.Prenom, Email = item.Email, TelFixe = item.TelFixe, TelPortable = item.TelPortable, SiteNom = SalarieService.Instance.GetNomSite(item.Site), Site = item.Site, ServiceNom = SalarieService.Instance.GetNomService(item.Service), Service = item.Service };
                                         ListeSalaries.Add(test);
                                     }
                                 }
@@ -167,7 +171,7 @@ namespace Evaluation_bloc.ViewsModel
                                     {
                                         if (item.Nom == nom)
                                         {
-                                            var test = new Salarie { Nom = item.Nom, Prenom = item.Prenom, Email = item.Email, TelFixe = item.TelFixe, TelPortable = item.TelPortable, SiteNom = SalarieService.Instance.GetNomSite(item.Site), ServiceNom = SalarieService.Instance.GetNomService(item.Service) };
+                                            var test = new Salarie { Id = item.Id, Nom = item.Nom, Prenom = item.Prenom, Email = item.Email, TelFixe = item.TelFixe, TelPortable = item.TelPortable, SiteNom = SalarieService.Instance.GetNomSite(item.Site), Site = item.Site, ServiceNom = SalarieService.Instance.GetNomService(item.Service), Service = item.Service };
                                             ListeSalaries.Add(test);
                                         }
                                     }
@@ -180,7 +184,7 @@ namespace Evaluation_bloc.ViewsModel
                                         {
                                             if (item.Site == site)
                                             {
-                                                var test = new Salarie { Nom = item.Nom, Prenom = item.Prenom, Email = item.Email, TelFixe = item.TelFixe, TelPortable = item.TelPortable, SiteNom = SalarieService.Instance.GetNomSite(item.Site), ServiceNom = SalarieService.Instance.GetNomService(item.Service) };
+                                                var test = new Salarie { Id = item.Id, Nom = item.Nom, Prenom = item.Prenom, Email = item.Email, TelFixe = item.TelFixe, TelPortable = item.TelPortable, SiteNom = SalarieService.Instance.GetNomSite(item.Site), Site = item.Site, ServiceNom = SalarieService.Instance.GetNomService(item.Service), Service = item.Service };
                                                 ListeSalaries.Add(test);
                                             }
                                         }
@@ -189,7 +193,7 @@ namespace Evaluation_bloc.ViewsModel
                                     {
                                         foreach (Salarie item in lst)
                                         {
-                                            var test = new Salarie { Nom = item.Nom, Prenom = item.Prenom, Email = item.Email, TelFixe = item.TelFixe, TelPortable = item.TelPortable, SiteNom = SalarieService.Instance.GetNomSite(item.Site), ServiceNom = SalarieService.Instance.GetNomService(item.Service) };
+                                            var test = new Salarie { Id = item.Id, Nom = item.Nom, Prenom = item.Prenom, Email = item.Email, TelFixe = item.TelFixe, TelPortable = item.TelPortable, SiteNom = SalarieService.Instance.GetNomSite(item.Site), Site = item.Site, ServiceNom = SalarieService.Instance.GetNomService(item.Service), Service = item.Service };
                                             ListeSalaries.Add(test);
                                         }
                                     }
@@ -253,6 +257,72 @@ namespace Evaluation_bloc.ViewsModel
                 }
                 return makeAdmin;
             }
+        }
+
+        private ICommand deleteCommand;
+
+        public ICommand DeleteCommand
+        {
+            get
+            {
+                if (deleteCommand == null)
+                {
+                    deleteCommand = new RelayCommand(() => {
+                        bool check = Services.SalarieService.Instance.Delete(SalarieSelected);
+                        //Mise a jour de la liste de contact
+                        if (check)
+                        {
+                            ListeSalaries.Remove(SalarieSelected);
+                            NotifyPropertyChanged("ListSalarie");
+                        }
+                    });
+                }
+                return deleteCommand;
+            }
+        }
+
+
+        private ICommand saveCommand;
+
+        public ICommand SaveCommand
+        {
+            get
+            {
+                if (saveCommand == null)
+                {
+                    saveCommand = new RelayCommand(() => {
+                        Services.SalarieService.Instance.Enregistrer(SalarieSelected);
+                        //Mise a jour de la liste de contact
+                        NotifyPropertyChanged("ListSalarie");
+                    });
+                }
+                return saveCommand;
+            }
+        }
+
+
+        private ICommand newCommand;
+        public ICommand NewCommand
+        {
+            get
+            {
+                if (newCommand == null)
+                {
+                    newCommand = new RelayCommand(() =>
+                    {
+                        //creation du nouveau client
+                        Salarie newsalarie = new Salarie();
+                        //L'ajouter a la liste
+                        ListeSalaries.Add(newsalarie);
+                        //avertir la vue que la liste a changée
+                        NotifyPropertyChanged("ListeSalarie");
+                        //placement sur le client qui viens d'etre cree
+                        collectionViewSalarie.MoveCurrentToLast();
+                    });
+                }
+                return newCommand;
+            }
+
         }
     }
 }

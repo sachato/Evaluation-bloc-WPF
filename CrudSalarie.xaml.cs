@@ -21,7 +21,19 @@ namespace Evaluation_bloc
             InitializeComponent();
 
             //Liste de Salarié dans le datacontext
-            this.DataContext = new ViewsModel.SalarieViewModel();
+            this.DataContext = new ViewsModel.ListViewModel();
+
+        }
+
+        private void Rechercher_Click(object sender, RoutedEventArgs e)
+        {
+            //Initialisation des variables filtre
+            string site = Site.Text;
+            string service = Service.Text;
+            string nom = Nom.Text;
+
+            //Nouvelle liste de Salarié dans le data context
+            this.DataContext = new ViewsModel.ListViewModel(site, service, nom);
         }
     }
 }

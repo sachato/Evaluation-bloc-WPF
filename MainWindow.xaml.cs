@@ -36,11 +36,13 @@ namespace Evaluation_bloc
         {
             //Initialisation des variables filtre
             string site = Site.Text;
-            var service = Service.Text;
+            string service = Service.Text;
             string nom = Nom.Text;
 
             //Nouvelle liste de Salarié dans le data context
             this.DataContext = new ViewsModel.ListViewModel(site, service, nom);
         }
+
+
     }
 }

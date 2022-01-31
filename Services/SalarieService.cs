@@ -90,8 +90,10 @@ namespace Evaluation_bloc.Services
         public void Enregistrer(Salarie salarie)
         {
             //Initialisation de variables
-            int idService = ServiceService.Instance.GetId(salarie.ServiceNom);
-            int idSite = SiteService.Instance.GetId(salarie.SiteNom);
+            //int idService = ServiceService.Instance.GetId(salarie.ServiceNom);
+            //int idSite = SiteService.Instance.GetId(salarie.SiteNom);
+            int idService = salarie.Service;
+            int idSite = salarie.Site;
             List<Service> lstService = ServiceService.Instance.ChargerService();
             List<Site> lstSite = SiteService.Instance.ChargerSites();
             int compteurSite = 0;
@@ -122,7 +124,7 @@ namespace Evaluation_bloc.Services
             //Si tout est bon, on enregistre
             if (compteurService > 0 && compteurSite > 0 && email)
             {
-                Salarie enregistremoi = new Salarie { Id = salarie.Id, Nom = salarie.Nom, Prenom = salarie.Prenom, Email = salarie.Email, TelFixe = salarie.TelFixe, TelPortable = salarie.TelPortable, Service = ServiceService.Instance.GetId(salarie.ServiceNom), Site = SiteService.Instance.GetId(salarie.SiteNom) };
+                Salarie enregistremoi = new Salarie { Id = salarie.Id, Nom = salarie.Nom, Prenom = salarie.Prenom, Email = salarie.Email, TelFixe = salarie.TelFixe, TelPortable = salarie.TelPortable, Service = idService, Site = idSite };
                 using (SalarieContext context = new SalarieContext())
                 {
                     context.Salaries.Update((Salarie)enregistremoi);

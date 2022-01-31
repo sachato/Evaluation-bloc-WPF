@@ -5,6 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Evaluation_bloc"
         mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
         Title="CrudService" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
@@ -30,10 +38,12 @@
 
         </ListBox>
 
-
+        <GridSplitter Grid.Row="1" Grid.Column="0" Grid.RowSpan="10" Width="10" Background="LightBlue">
+        </GridSplitter>
+        
         <Views:Service Grid.Column="1" Grid.Row="1" DataContext="{Binding ServiceSelected}" Grid.RowSpan="2" Grid.ColumnSpan="10"/>
 
-        <StackPanel Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="10" Orientation="Horizontal" Margin="29,20,0,0">
+        <StackPanel Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="10" Orientation="Horizontal" Margin="150,0,0,50">
             <Button Content="Enregistrer" Command="{Binding SaveCommand}"/>
             <Button Content="Supprimer" Margin="20 0 0 0" Command="{Binding DeleteCommand}"/>
             <Button Content="Nouveau" Margin="20 0 0 0" Command="{Binding NewCommand}"/>

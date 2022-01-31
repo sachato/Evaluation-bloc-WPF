@@ -4,6 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Evaluation_bloc"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
         Title="Crud Site" Height="600" Width="1000" MinHeight="400" MinWidth="600">
 
 
@@ -31,10 +39,11 @@
 
         </ListBox>
 
-
+        <GridSplitter Grid.Row="1" Grid.Column="0" Grid.RowSpan="10" Width="10" Background="LightBlue">
+        </GridSplitter>
         <Views:Site Grid.Column="1" Grid.Row="1" DataContext="{Binding SiteSelected}" Grid.RowSpan="2" Grid.ColumnSpan="10"/>
-
-        <StackPanel Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="10" Orientation="Horizontal" Margin="29,20,0,0">
+        
+        <StackPanel Grid.Column="3" Grid.Row="2" Grid.ColumnSpan="10" Orientation="Horizontal" Margin="150,0,0,50">
             <Button Content="Enregistrer" Command="{Binding SaveCommand}"/>
             <Button Content="Supprimer" Margin="20 0 0 0" Command="{Binding DeleteCommand}"/>
             <Button Content="Nouveau" Margin="20 0 0 0" Command="{Binding NewCommand}"/>

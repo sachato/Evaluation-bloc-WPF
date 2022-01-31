@@ -5,11 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Evaluation_bloc"
         mc:Ignorable="d"
-        Title="Identification" Height="160" Width="300">
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        Title="Identification" Height="152" Width="300">
+
+    <Window.InputBindings>
+    </Window.InputBindings>
     <Grid>
         <StackPanel Margin="10">
             <Label>Password:</Label>
-            <PasswordBox Name="pass" />
+            <PasswordBox Name="pass" KeyDown="OnKeyDownHandler" Cursor="IBeam"/>
             <Button Content="Valider" Click="Pass_Click"/>
         </StackPanel>
     </Grid>

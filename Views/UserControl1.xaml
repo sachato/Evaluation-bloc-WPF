@@ -32,14 +32,14 @@
         <Label Grid.Column="1" Grid.Row="5"  Margin="0 10 0 0" Content="Portable"/>
         <Label Grid.Column="1" Grid.Row="6"  Margin="0 10 0 0" Content="Site"/>
         <Label Grid.Column="1" Grid.Row="7"  Margin="0 10 0 0" Content="Service"/>
-        
-        <TextBox Grid.Column="2" Grid.Row="1"  Margin="0 10 0 0" Text="{Binding Nom}"/>
-        <TextBox Grid.Column="2" Grid.Row="2"  Margin="0 10 0 0" Text="{Binding Prenom}"/>
-        <TextBox Grid.Column="2" Grid.Row="3"  Margin="0 10 0 0" Text="{Binding Email}"/>
-        <TextBox Grid.Column="2" Grid.Row="4"  Margin="0 10 0 0" Text="{Binding TelFixe}"/>
-        <TextBox Grid.Column="2" Grid.Row="5"  Margin="0 10 0 0" Text="{Binding TelPortable}"/>
-        <TextBox Grid.Column="2" Grid.Row="6"  Margin="0 10 0 0" Text="{Binding SiteNom}"/>
-        <TextBox Grid.Column="2" Grid.Row="7"  Margin="0 10 0 0" Text="{Binding ServiceNom}"/>
+
+        <Label Grid.Column="2" Grid.Row="1"  Margin="0 10 0 0" Content="{Binding Nom}"/>
+        <Label Grid.Column="2" Grid.Row="2"  Margin="0 10 0 0" Content="{Binding Prenom}"/>
+        <Label Grid.Column="2" Grid.Row="3"  Margin="0 10 0 0" Content="{Binding Email}"/>
+        <Label Grid.Column="2" Grid.Row="4"  Margin="0 10 0 0" Content="{Binding TelFixe}"/>
+        <Label Grid.Column="2" Grid.Row="5"  Margin="0 10 0 0" Content="{Binding TelPortable}"/>
+        <Label Grid.Column="2" Grid.Row="6"  Margin="0 10 0 0" Content="{Binding SiteNom}"/>
+        <Label Grid.Column="2" Grid.Row="7"  Margin="0 10 0 0" Content="{Binding ServiceNom}"/>
 
 
     </Grid>

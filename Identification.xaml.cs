@@ -21,6 +21,14 @@ namespace Evaluation_bloc
             InitializeComponent();
         }
 
+        private void OnKeyDownHandler(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                Pass_Click(sender, e);
+            }
+        }
+
         private void Pass_Click(object sender, RoutedEventArgs e)
         {
             //initialisation de la variable password
