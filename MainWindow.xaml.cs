@@ -29,6 +29,8 @@ namespace Evaluation_bloc
             //Services.SalarieService.Instance.Seed();
             //recuperation de la siste des salarié dans le datacontext
             this.DataContext = new ViewsModel.ListViewModel();
+            var lstNomAutocomplete = Services.SalarieService.Instance.LstNom();
+            Nom.ItemsSource = lstNomAutocomplete;
         }
 
         //methode de recherche par trois filtre : Site, Service et Nom

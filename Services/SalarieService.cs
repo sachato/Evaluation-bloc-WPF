@@ -98,12 +98,79 @@ namespace Evaluation_bloc.Services
             List<Site> lstSite = SiteService.Instance.ChargerSites();
             int compteurSite = 0;
             int compteurService = 0;
+            bool email;
+            bool nom;
+            bool prenom;
+            bool telFixe;
+            bool telPortable;
+            Regex phoneValidator = new Regex(@"^[0]{1}[1-9]{1}[0-9]{8}$");
             Regex emailValidator = new Regex(@"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$");
 
             //verification format email
-            bool email = emailValidator.IsMatch(salarie.Email);
+            if (String.IsNullOrEmpty(salarie.Email) || salarie.Email == "")
+            {
+                email = false;
+            }
+            else
+            {
+                email = emailValidator.IsMatch(salarie.Email);
+            }
+            //Verification phone
+            if (String.IsNullOrEmpty(salarie.TelFixe) || salarie.TelFixe == "")
+            {
+                telFixe = false;
+            }
+            else
+            {
+                telFixe = phoneValidator.IsMatch(salarie.TelFixe);
+            }
+
+            if (String.IsNullOrEmpty(salarie.TelPortable) || salarie.TelPortable == "")
+            {
+                telPortable = false;
+            }
+            else
+            {
+                telPortable = phoneValidator.IsMatch(salarie.TelPortable);
+            }
+            //verificaion nom
+            if (String.IsNullOrEmpty(salarie.Nom) || salarie.Nom == "")
+            {
+                nom = false;
+            }
+            else
+            {
+                if(salarie.Nom is string)
+                {
+                    nom = true;
+                }
+                else
+                {
+                    nom = false;
+                }
+            }
+
+            //verification prenom
+            if (String.IsNullOrEmpty(salarie.Prenom) || salarie.Prenom == "")
+            {
+                prenom = false;
+            }
+            else
+            {
+                if (salarie.Prenom is string)
+                {
+                    prenom = true;
+                }
+                else
+                {
+                    prenom = false;
+                }
+            }
+
+
 
             //Verification de l'existance du site
+            
             foreach (Site item in lstSite)
             {
                 if(item.Id == idSite)
@@ -122,14 +189,33 @@ namespace Evaluation_bloc.Services
             }
 
             //Si tout est bon, on enregistre
-            if (compteurService > 0 && compteurSite > 0 && email)
+            if (compteurService > 0 && compteurSite > 0 && email && nom && prenom && telFixe && telPortable)
             {
-                Salarie enregistremoi = new Salarie { Id = salarie.Id, Nom = salarie.Nom, Prenom = salarie.Prenom, Email = salarie.Email, TelFixe = salarie.TelFixe, TelPortable = salarie.TelPortable, Service = idService, Site = idSite };
+                var lst = Services.SalarieService.instance.ChargerSalarie();
+                int toSave = 0;
+                foreach (Salarie item in lst)
+                {
+                    if (salarie.Nom == item.Nom && salarie.Prenom == item.Prenom)
+                    {
+                        toSave = item.Id;
+                    }
+                }
+                Salarie enregistremoi;
+                if (toSave == 0)
+                {
+                     enregistremoi = new Salarie { Id = salarie.Id, Nom = salarie.Nom, Prenom = salarie.Prenom, Email = salarie.Email, TelFixe = salarie.TelFixe, TelPortable = salarie.TelPortable, Service = idService, Site = idSite };
+                }
+                else
+                {
+                    enregistremoi = new Salarie { Id = toSave, Nom = salarie.Nom, Prenom = salarie.Prenom, Email = salarie.Email, TelFixe = salarie.TelFixe, TelPortable = salarie.TelPortable, Service = idService, Site = idSite };
+                }
+                
                 using (SalarieContext context = new SalarieContext())
                 {
                     context.Salaries.Update((Salarie)enregistremoi);
                     context.SaveChanges();
                 }
+
             }
             //Sinon pop up erreur
             else
@@ -140,12 +226,39 @@ namespace Evaluation_bloc.Services
 
         public bool Delete(Salarie salarie)
         {
+            
+
             using (SalarieContext context = new SalarieContext())
             {
-                context.Salaries.Remove((Salarie)salarie);
+                var lst = Services.SalarieService.instance.ChargerSalarie();
+                Salarie toDelete = new Salarie();
+                foreach (Salarie item in lst)
+                {
+                    if (salarie.Nom == item.Nom && salarie.Prenom == item.Prenom)
+                    {
+                        toDelete = item;
+                    }
+                }
+                context.Salaries.Remove((Salarie)toDelete);
                 context.SaveChanges();
             }
             return true;
+        }
+
+        public string[] LstNom()
+        {
+            var name = new List<string>();
+            var salarie = ChargerSalarie();
+            foreach(Salarie item in salarie)
+            {
+                if (name.Contains(item.Nom) == false)
+                {
+                    name.Add(item.Nom);
+                }
+            }
+            String[] names = name.ToArray();
+            return names;
+
         }
     }
 }

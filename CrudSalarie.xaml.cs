@@ -22,6 +22,8 @@ namespace Evaluation_bloc
 
             //Liste de Salarié dans le datacontext
             this.DataContext = new ViewsModel.ListViewModel();
+            var lstNomAutocomplete = Services.SalarieService.Instance.LstNom();
+            Nom.ItemsSource = lstNomAutocomplete;
 
         }
 

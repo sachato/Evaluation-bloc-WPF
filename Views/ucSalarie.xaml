@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:Evaluation_bloc.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -29,7 +30,7 @@
         <Label Grid.Column="1" Grid.Row="4"  Margin="0 20 0 0" Content="Fixe"/>
         <Label Grid.Column="1" Grid.Row="5"  Margin="0 20 0 0" Content="Portable"/>
 
-        <TextBox Grid.Column="2" Grid.Row="1"  Margin="10 20 0 0" Text="{Binding Nom}"/>
+        <TextBox Grid.Column="2" Grid.Row="1"  Margin="10 20 0 0" Text="{Binding Nom, ValidatesOnExceptions=True, UpdateSourceTrigger=LostFocus}"/>
         <TextBox Grid.Column="2" Grid.Row="2"  Margin="10 20 0 0" Text="{Binding Prenom}"/>
         <TextBox Grid.Column="2" Grid.Row="3"  Margin="10 20 0 0" Text="{Binding Email}"/>
         <TextBox Grid.Column="2" Grid.Row="4"  Margin="10 20 0 0" Text="{Binding TelFixe}"/>

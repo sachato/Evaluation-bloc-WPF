@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Evaluation_bloc"
         mc:Ignorable="d"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:controls="clr-namespace:System.Windows.Controls;assembly=DotNetProjects.Input.Toolkit"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
         TextElement.FontSize="13"
@@ -38,7 +38,12 @@
         </Grid.RowDefinitions> 
 
         <Label Grid.Column="2" Grid.Row="0"  Margin="0 10 0 0" Content="Nom"/>
-        <TextBox Grid.Column="3" Grid.Row="0"  Margin="0 10 0 0" Text="" Name ="Nom"/>
+        <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="3" Margin="0 15 0 0">
+            <controls:AutoCompleteBox x:Name="Nom">
+
+            </controls:AutoCompleteBox>
+            <!--<TextBox Text="" Name ="Nom"/>-->
+        </StackPanel>
         <Label Grid.Column="4" Grid.Row="0"  Margin="0 10 0 0" Content="Site"/>
         <!--<TextBox Grid.Column="5" Grid.Row="0"  Margin="0 10 0 0" Text="" Name ="Site"/> -->
         <ComboBox Name="Site" Grid.Column="5" Grid.Row="0" ItemsSource="{Binding ListeSites}" DisplayMemberPath="Ville"/>

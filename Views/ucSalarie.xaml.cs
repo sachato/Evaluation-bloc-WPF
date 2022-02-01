@@ -20,9 +20,25 @@ namespace Evaluation_bloc.Views
     /// </summary>
     public partial class ucSalarie : UserControl
     {
+        private string _nom;
+        public string Nom
+        {
+            get { return _nom; }
+            set
+            {
+                if (value.Length < 6 || value.Length > 50)
+                {
+                    throw new ArgumentException("Name should be between range 6-50");
+                }
+
+                _nom = value;
+            }
+        }
         public ucSalarie()
         {
             InitializeComponent();
         }
+
+        
     }
 }
